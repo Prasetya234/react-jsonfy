@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as Mui from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,7 +7,15 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import PropTypes from 'prop-types';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 
 class Users extends Component{
     constructor(props) {
@@ -31,15 +38,31 @@ class Users extends Component{
 
         return(
             <div>
+                <AppBar>
+          <Toolbar>
+            <Typography variant="h6">Scroll to Elevate App Bar</Typography>
+          </Toolbar>
+        </AppBar>
                 <nav>
-                    <div class="nav-wrapper red accent-4">
-                    <a href="#!" class="brand-logo center">Data Json Users</a>
-                    <ul class="left hide-on-med-and-down">
-                        <li><a href="/">Users</a></li>
-                        <li><a href="/Comments">Comments</a></li>
-                        <li class="active"><a href="/Posts">Posts</a></li>
-                    </ul>
-                    </div>
+                    <Mui.AppBar>
+                        <Mui.Toolbar>
+                        <a href="#!" class="brand-logo right">Data Json Users</a>
+                            <Mui.Typography variant="h6">
+                                <div class="nav-wrapper red accent-4">
+                                    <ul class="left hide-on-med-and-down">
+                                        <li><a href="/">Users</a></li>
+                                        <li><a href="/Comments">Comments</a></li>
+                                        <li><a href="/Posts">Posts</a></li>
+                                        <li><a href="/Albums">Albums</a></li>
+                                        <li><a href="/Photos">Photos</a></li>
+                                        <li><a href="/Categories">Categories</a></li>
+                                        <li><a href="/Brands">Brands</a></li>
+                                        <li><a href="/Items">Items</a></li>
+                                    </ul>
+                                </div>
+                            </Mui.Typography>
+                        </Mui.Toolbar>
+                    </Mui.AppBar>
                 </nav>
                 <Mui.Container Fixed>
                     <Mui.Paper class="card-panel amber">

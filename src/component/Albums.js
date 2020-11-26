@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import * as Mui from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+import purple from '@material-ui/core/colors/purple';
 
-class Posts extends Component{
+class Albums extends Component{
     constructor(props) {
         super(props);
     
@@ -9,26 +11,26 @@ class Posts extends Component{
           data : [],
         };
       }
-    
+      
       componentDidMount() {
-        const apiUrl = 'https://jsonfy.com/posts';
+        const apiUrl = 'https://jsonfy.com/albums';
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => this.setState({ data: data }));
       }
-
+      
     render(){
         const { data } = this.state;
 
         return(
             <div>
                 <nav>
-                    <Mui.AppBar>
+                    <Mui.AppBar position='static'>
                         <Mui.Toolbar>
                         <a href="#!" class="brand-logo right">Data Json Users</a>
                             <Mui.Typography variant="h6">
-                                <div class="nav-wrapper red accent-4">
-                                    <ul class="left hide-on-med-and-down">
+                                <div class="nav-wrapper">
+                                    <ul class="left hide-on-med-and-down" varian>
                                         <li><a href="/">Users</a></li>
                                         <li><a href="/Comments">Comments</a></li>
                                         <li><a href="/Posts">Posts</a></li>
@@ -44,35 +46,38 @@ class Posts extends Component{
                     </Mui.AppBar>
                 </nav>
                 <Mui.Container Fixed>
-                <br/><h2>Data Json Posts</h2><br/>
-                <table>
+                    <br/><h2>Data Json Albums</h2><br/>
+                    <table>
                     <thead>
-                        <tr class="card-panel indigo">
+                        <tr class="card-panel red darken-1">
                             <td>id</td>
-                            <td>use_pos_fk</td> 
-                            <td>title</td>
-                            <td>body</td> 
-                            <td >date_add</td>
-                            <td>date_upd</td>
+                            <td>title</td> 
+                            <td>use_alb_fk</td>
                         </tr>
                     </thead>
                     {data.map(todo =>
                     <tbody>
                         <tr hey={todo.id}>
                             <td>{todo.id}</td>
-                            <td>{todo.use_pos_fk}</td> 
-                            <td>{todo.title}</td>
-                            <td>{todo.body}</td> 
-                            <td>{todo.date_add}</td>     
-                            <td>{todo.date_upd}</td>
+                            <td>{todo.title}</td>  
+                            <td>{todo.use_alb_fk}</td>  
                         </tr>
-                        </tbody>
-                    )}
-                </table>
+                    </tbody>
+                )}
+            </table>
                 </Mui.Container>
             </div>
         )
     }
 }
-    
-export default Posts;
+const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: purple[500],
+      },
+      secondary: {
+        main: '#f44336',
+      },
+    },
+  });
+export default Albums;

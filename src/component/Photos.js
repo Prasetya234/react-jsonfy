@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as Mui from '@material-ui/core';
 
-class Posts extends Component{
+class Photos extends Component{
     constructor(props) {
         super(props);
     
@@ -11,7 +11,7 @@ class Posts extends Component{
       }
     
       componentDidMount() {
-        const apiUrl = 'https://jsonfy.com/posts';
+        const apiUrl = 'https://jsonfy.com/photos';
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => this.setState({ data: data }));
@@ -44,35 +44,33 @@ class Posts extends Component{
                     </Mui.AppBar>
                 </nav>
                 <Mui.Container Fixed>
-                <br/><h2>Data Json Posts</h2><br/>
-                <table>
+                <br/><h2>Data Json Photos</h2><br/>
+                    <table>
                     <thead>
                         <tr class="card-panel indigo">
                             <td>id</td>
-                            <td>use_pos_fk</td> 
-                            <td>title</td>
-                            <td>body</td> 
-                            <td >date_add</td>
-                            <td>date_upd</td>
+                            <td>alb_pho_fk</td> 
+                            <td>caption</td>
+                            <td>url</td>
+                            <td>thumbnail_url</td>
                         </tr>
                     </thead>
                     {data.map(todo =>
                     <tbody>
                         <tr hey={todo.id}>
                             <td>{todo.id}</td>
-                            <td>{todo.use_pos_fk}</td> 
-                            <td>{todo.title}</td>
-                            <td>{todo.body}</td> 
-                            <td>{todo.date_add}</td>     
-                            <td>{todo.date_upd}</td>
+                            <td>{todo.alb_pho_fk}</td>  
+                            <td>{todo.caption}</td> 
+                            <td>{todo.url}</td>  
+                            <td>{todo.thumbnail_url}</td>  
                         </tr>
-                        </tbody>
-                    )}
-                </table>
+                    </tbody>
+                )}
+            </table>
                 </Mui.Container>
             </div>
         )
     }
 }
     
-export default Posts;
+export default Photos;
